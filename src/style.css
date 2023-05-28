@@ -1,5 +1,5 @@
 .container {
-  padding: 100px;
+  padding: 50px;
 }
 
 .card {
@@ -83,4 +83,9 @@ a:hover {
 .forecast {
   font-size: 12px;
   font-weight: 100;
+}
+
+.open-source-link {
+  margin-top: -50px;
+  margin-left: 90px;
 }
