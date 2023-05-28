@@ -86,6 +86,6 @@ a:hover {
 }
 
 .open-source-link {
-  margin-top: -50px;
-  margin-left: 90px;
+  text-align: center;
+  margin: -50px;
 }
