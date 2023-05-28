@@ -4,10 +4,115 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dox You</title>
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/d06e0f5305.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
   </head>
-  <link rel="stylesheet" href="src\style.css" />
   <body>
-    <h1>BOO</h1>
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <form class="search-input">
+            <div class="row">
+              <div class="col-9">
+                <div class="search-bar">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Type a city"
+                    id="search-tab"
+                  />
+                </div>
+              </div>
+              <div class="col-3 btn">
+                <input
+                  type="submit"
+                  class="search form-control shadow"
+                  value="Search"
+                />
+              </div>
+            </div>
+          </form>
+          <h1 class="city-display">London</h1>
+          <ul class="current-data">
+            <li class="current-day">Thursday</li>
+            <div class="clearfix">
+              <div class="float-left">
+                <li>
+                  <span class="current-date">23 Mar 16:00</span>
+
+                  <span class="icon-today float-left"
+                    ><i class="fa-solid fa-cloud-sun"></i
+                  ></span>
+                </li>
+              </div>
+            </div>
+            <li class="description-today">Partly Cloudy</li>
+            <li class="temp-today">
+              <span class="big-temp">12</span
+              ><span class="unit"
+                ><span class="cTemp"> <a href="#">°C</a> </span>|<span
+                  class="fTemp"
+                >
+                  <a href="#">F</a>
+                </span></span
+              >
+            </li>
+          </ul>
+          <div class="row">
+            <div class="col-2 day-1">
+              <div><i class="fa-solid fa-cloud-sun"></i></div>
+              Mon
+              <div class="forecast">13°C / 2°C</div>
+            </div>
+            <div class="col-2 day-2">
+              <div>
+                <i class="fa-solid fa-snowflake"></i>
+              </div>
+              Tue
+              <div class="forecast">8°C / -1°C</div>
+            </div>
+            <div class="col-2 day-3">
+              <div><i class="fa-solid fa-wind"></i></div>
+              Wed
+              <div class="forecast">9°C / 6°C</div>
+            </div>
+            <div class="col-2 day-4">
+              <div><i class="fa-solid fa-cloud-showers-heavy"></i></div>
+              Thur
+              <div class="forecast">11°C / 9°C</div>
+            </div>
+            <div class="col-2 day-5">
+              <div><i class="fa-sharp fa-solid fa-sun"></i></div>
+              Fri
+              <div class="forecast">13°C / 8°C</div>
+            </div>
+            <div class="col-2 day-6">
+              <div><i class="fa-solid fa-cloud-sun-rain"></i></div>
+              Sat
+              <div class="forecast">12°C / 7°C</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/script.js"></script>
   </body>
 </html>
