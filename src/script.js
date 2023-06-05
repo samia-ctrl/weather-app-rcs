@@ -44,6 +44,8 @@ function getWeather(response) {
   console.log(todayIcon);
   todayIcon.innerHTML = `<img src=
     "https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png">`;
+
+  cTemp = response.data.main.temp;
 }
 
 function defCity(city) {
@@ -59,5 +61,26 @@ function searchCity(event) {
 }
 let form = document.querySelector(".search-input");
 form.addEventListener("submit", searchCity);
+
+function displayFahrConversion(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector(".big-temp");
+  let fTemperature = (cTemp * 9) / 5 + 32;
+  tempElement.innerHTML = Math.round(fTemperature);
+}
+
+let cTemp = null;
+
+let fLink = document.querySelector(".fTemp");
+fLink.addEventListener("click", displayFahrConversion);
+
+function celConversion(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector(".big-temp");
+  tempElement.innerHTML = Math.round(cTemp);
+}
+
+let cLink = document.querySelector(".cTemp");
+cLink.addEventListener("click", celConversion);
 
 defCity("London");
