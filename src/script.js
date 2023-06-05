@@ -35,12 +35,15 @@ currentDate.innerHTML = `${date} ${month} ${year}`;
 function getWeather(response) {
   let curTemp = document.querySelector(".big-temp");
   let temperature = Math.round(`${response.data.main.temp}`);
-  curTemp.innerHTML = `${temperature}`;
   let curDesc = document.querySelector(".description-today");
-  console.log(response.data.weather[0].description);
-  curDesc.innerHTML = `${response.data.weather[0].description}`;
   let showCity = document.querySelector(".city-display");
+  let todayIcon = document.querySelector("#current-icon");
+  curTemp.innerHTML = `${temperature}`;
+  curDesc.innerHTML = `${response.data.weather[0].description}`;
   showCity.innerHTML = `${response.data.name}`;
+  console.log(todayIcon);
+  todayIcon.innerHTML = `<img src=
+    "https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png">`;
 }
 
 function defCity(city) {
@@ -54,17 +57,7 @@ function searchCity(event) {
   let city = document.querySelector("#search-tab").value;
   defCity(city);
 }
-
 let form = document.querySelector(".search-input");
 form.addEventListener("submit", searchCity);
 
-function showTemp(response) {
-  let locationTemp = document.querySelector(".big-temp");
-  let posTemp = Math.round(`${response.data.main.temp}`);
-  locationTemp.innerHTML = `${posTemp}`;
-  let location = document.querySelector(".city-display");
-  location.innerHTML = `${response.data.name}`;
-  let localDesc = document.querySelector(".description-today");
-  localDesc.innerHTML = `${response.data.weather[0].description}`;
-}
 defCity("London");

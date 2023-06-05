@@ -1,11 +1,15 @@
+body {
+  background-color: #eff3eb;
+}
+
 .container {
   padding: 50px;
 }
 
 .card {
   padding: 40px 0px;
-  background-color: #ebedf3;
-  border-color: #ebedf3;
+  background-color: #9fad8e;
+  border-color: #eff3eb;
   width: 400px;
   display: block;
   margin: 0 auto;
@@ -38,10 +42,10 @@ ul {
   font-family: "Montserrat", sans-serif;
 }
 
-span.icon-today {
+#current-icon {
   font-size: 60px;
   line-height: 1;
-  margin-left: 30px;
+  margin-left: 40px;
 }
 
 .description-today {
