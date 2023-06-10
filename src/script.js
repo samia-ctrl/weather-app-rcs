@@ -32,6 +32,23 @@ let date = now.getDate();
 let year = now.getFullYear();
 currentDate.innerHTML = `${date} ${month} ${year}`;
 
+function displayForecast() {
+  forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+                  <div><i class="fa-solid fa-cloud-sun"></i></div>
+                  ${day}
+                  <div class="forecast"> <span class ="weather-forecast-max">13°C</span> / <span class ="weather-forecast-max">3°C</span></div>
+                </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function getWeather(response) {
   let curTemp = document.querySelector(".big-temp");
   let temperature = Math.round(`${response.data.main.temp}`);
@@ -84,3 +101,4 @@ let cLink = document.querySelector(".cTemp");
 cLink.addEventListener("click", celConversion);
 
 defCity("London");
+displayForecast();
