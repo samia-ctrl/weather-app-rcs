@@ -11,7 +11,7 @@ let days = [
 ];
 let day = days[now.getDay()];
 
-currentDay.innerHTML = `${day} ${now.getHours()}:${now.getMinutes()}`;
+currentDay.innerHTML = `Last updated: <div> ${day} ${now.getHours()}:${now.getMinutes()} </div>`;
 let currentDate = document.querySelector("span.current-date");
 let months = [
   "Jan",
@@ -38,7 +38,6 @@ function formatForecastDay(timestamp) {
   let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
   return days[day];
 }
-
 function displayForecast(response) {
   let dailyForecast = response.data.daily;
   console.log(response.data.daily);
@@ -68,7 +67,6 @@ function displayForecast(response) {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "178f8b8473d9d71otc08ad2a930530d0";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.lon}&lat=${coordinates.lat}&key=${apiKey}`;
   axios.get(apiUrl).then(displayForecast);
