@@ -32,7 +32,8 @@ let date = now.getDate();
 let year = now.getFullYear();
 currentDate.innerHTML = `${date} ${month} ${year}`;
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data);
   forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri"];
@@ -40,13 +41,21 @@ function displayForecast() {
     forecastHTML =
       forecastHTML +
       `<div class="col-2">
-                  <div><i class="fa-solid fa-cloud-sun"></i></div>
+                  <div><img src ="#"/> </div>
                   ${day}
                   <div class="forecast"> <span class ="weather-forecast-max">13°C</span> / <span class ="weather-forecast-max">3°C</span></div>
                 </div>`;
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "c6f8ef4575250284954db9f4dfa7a996";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+  console.log(apiUrl);
 }
 
 function getWeather(response) {
@@ -58,11 +67,11 @@ function getWeather(response) {
   curTemp.innerHTML = `${temperature}`;
   curDesc.innerHTML = `${response.data.weather[0].description}`;
   showCity.innerHTML = `${response.data.name}`;
-  console.log(todayIcon);
   todayIcon.innerHTML = `<img src=
-    "https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png">`;
+  "https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png">`;
 
   celTemp = response.data.main.temp;
+  getForecast(response.data.coord);
 }
 
 function defCity(city) {
