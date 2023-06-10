@@ -32,19 +32,36 @@ let date = now.getDate();
 let year = now.getFullYear();
 currentDate.innerHTML = `${date} ${month} ${year}`;
 
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data);
+  let dailyForecast = response.data.daily;
+  console.log(response.data.daily);
   forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
-                  <div><img src ="#"/> </div>
-                  ${day}
-                  <div class="forecast"> <span class ="weather-forecast-max">13°C</span> / <span class ="weather-forecast-max">3°C</span></div>
+  dailyForecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
+                  <div id="forecast-icons"><img src ="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+                    forecastDay.condition.icon
+                  }.png" width= "40px"/></div>
+                 <div class="day-forecast">${formatForecastDay(
+                   forecastDay.time
+                 )}</div>
+                  <div class="forecast"> <span class ="weather-forecast-max">${Math.round(
+                    forecastDay.temperature.maximum
+                  )}°C</span> / <span class ="weather-forecast-max">${Math.round(
+          forecastDay.temperature.minimum
+        )}°C</span></div>
                 </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
@@ -52,8 +69,8 @@ function displayForecast(response) {
 
 function getForecast(coordinates) {
   console.log(coordinates);
-  let apiKey = "c6f8ef4575250284954db9f4dfa7a996";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let apiKey = "178f8b8473d9d71otc08ad2a930530d0";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.lon}&lat=${coordinates.lat}&key=${apiKey}`;
   axios.get(apiUrl).then(displayForecast);
   console.log(apiUrl);
 }

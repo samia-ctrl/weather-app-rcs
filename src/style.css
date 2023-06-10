@@ -89,6 +89,9 @@ a:hover {
   font-weight: 100;
 }
 
+#forecast-icons {
+  width: 16px;
+}
 .open-source-link {
   text-align: center;
   margin: -50px;
